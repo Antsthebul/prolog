@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github/com/gorilla/mux"
+	"github.com/gorilla/mux"
 )
 
 func NewHTTPServer(addr string) *http.Server {
@@ -48,7 +48,7 @@ func (s *httpServer) handleProduce(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	off, err := Log.Append(req.Record)
+	off, err := s.Log.Append(req.Record)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
